@@ -1,0 +1,20 @@
+# Enter a message in "plaintext" for it to be encrypted using the Caesar Cipher.
+# Enter any integer in "key".
+# "Key" is the number of shifts to the right each character in "plaintext" will make when they are encrypted.
+plaintext = "Hello world"
+key = 1
+
+ciphertext = ""
+letters = "abcdefghijklmnopqrstuvwxyz"
+for index_ch in range(0, len(plaintext)):
+    if plaintext[index_ch].lower() in letters:
+        for index_pl in range(0, len(letters)):
+            if plaintext[index_ch].lower() == letters[index_pl]:
+                if plaintext[index_ch].isupper():
+                    ciphertext += letters[(index_pl + key) % len(letters)].upper()
+                else:
+                    ciphertext += letters[(index_pl + key) % len(letters)]
+                break
+    else:
+        ciphertext += plaintext[index_ch]
+print(ciphertext)
